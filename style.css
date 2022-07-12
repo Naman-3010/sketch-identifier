@@ -1,0 +1,30 @@
+body{
+    font-size: 18;
+    font-family: cursive;
+    font-weight: bold;
+    letter-spacing: 4px;
+    background:url("https://img.freepik.com/free-vector/gradient-grainy-gradient-texture_79603-1642.jpg?w=2000") ;
+}
+
+h1{
+    color: blue;
+    text-shadow: 4px 4px  gold;
+    background: red;
+}
+#show_sketch{
+    float:right;
+}
+
+canvas{
+    border:5px solid red;
+    border-radius: 20px;
+    margin-top: 80px;
+    animation-name: RGB;
+    animation-duration: 4s;
+    animation-iteration-count: infinite;
+}
+
+@keyframes RGB{
+    from{box-shadow: 1px 1px 38px orange;}
+    to{box-shadow: 1px 1px 38px blue;}
+}
