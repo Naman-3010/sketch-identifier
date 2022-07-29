@@ -1,54 +1,40 @@
-
-
 function setup() {
-    canvas = createCanvas(1500, 500);
-    canvas.center();
-    background("white");
-    canvas.mouseReleased(classifyCanvas);
-    synth = window.speechSynthesis;
+  canvas = createCanvas(300, 300);
+  canvas.center();
+  video = createCapture(VIDEO);
+  video.hide();
+  classifier=ml5.imageClassifier('MobileNet',modelLoaded);
+}
+
+function modelLoaded(){
+  console.log("model loaded");  
+}
+
+function draw(){
+  image(video,0,0,300,300);
+  classifier.classify(video,gotResult);
+}
+
+var previous_result="";
+
+function gotResult(error,results){
+  if(error){
+    console.error(error); 
   }
-  
-  function preload() {
-  
-  
-    classifier = ml5.imageClassifier('DoodleNet');
-  }
-  
-  
-  
-  function clearCanvas() {
-  
-    background("white");
-  }
-  
-  function draw() {
-  
-    // Set stroke weight to 13
-    strokeWeight(13);
-    // Set stroke color to black
-    stroke(0);
-    // If mouse is pressed, draw line between previous and current mouse positions
-    if (mouseIsPressed) {
-      line(pmouseX, pmouseY, mouseX, mouseY);
+  else{
+    if((results[0].confidence>0.5)&&(previous_result!=results[0].label)){
+      console.log(results);
+      previous_result=results[0].label;
+      var synth=window.speechSynthesis;
+      speak_data='object detected is- '+results[0].label;
+      var utterThis=new SpeechSynthesisUtterance(speak_data);
+      synth.speak(utterThis);
+      document.getElementById("result_object_name").innerHTML=results[0].label;
+      document.getElementById("result_object_accuracy").innerHTML=results[0].confidence.toFixed(3);
     }
+
   }
-  
-  function classifyCanvas() {
-    classifier.classify(canvas, gotResult);
-  }
-  
-  function gotResult(error, results) {
-    if (error) {
-      console.error(error);
-    }
-    console.log(results);
-    document.getElementById('label').innerHTML = 'Label: ' + results[0].label;
-  
-    document.getElementById('confidence').innerHTML = 'Confidence: ' + Math.round(results[0].confidence * 100) + '%';
-  
-    utterThis = new SpeechSynthesisUtterance(results[0].label);
-    synth.speak(utterThis);
-  }
-  
-  
-  
+}
+
+
+

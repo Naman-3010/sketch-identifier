@@ -1,30 +1,48 @@
-body{
-    font-size: 18;
+  .heading
+  {
+    width: 100%;
+    margin: 0px;
+    box-shadow:5px 5px 5px grey;
+  }
+  .heading_div
+  {
+    float: none;
+    background: rgb(45, 169, 34) ; 
+    border-radius: 20px; 
+    color: rgb(245, 234, 234);
+    box-shadow:5px 5px 5px rgb(237, 220, 220);
+  }
+  .heading_div2
+  {
+    font-size: 18px ;
+  }
+  .result_para_tags
+  {
+    box-shadow:5px 5px 5px rgb(235, 231, 25);
+    font-size: 20px;
+  }
+  .result_para_tag span{
+    white-space: pre-line;
+  }
+  body{
+    background: url("https://i.pinimg.com/originals/2e/8b/01/2e8b013bd630c641a88951f8182e27a6.jpg");
+    background-position:center;
+    color:white;
+    font-size:14px;
     font-family: cursive;
-    font-weight: bold;
-    letter-spacing: 4px;
-    background:url("https://img.freepik.com/free-vector/gradient-grainy-gradient-texture_79603-1642.jpg?w=2000") ;
-}
-
-h1{
-    color: blue;
-    text-shadow: 4px 4px  gold;
-    background: red;
-}
-#show_sketch{
-    float:right;
-}
-
-canvas{
-    border:5px solid red;
+  }
+  .copy_right_footer{
+    position:fixed;
+    color:gold;
+    bottom:0;
+    background-color:blue;
+    line-height: 3;
+    text-align: center;
+  }
+  canvas{
+    border:5px solid white;
     border-radius: 20px;
-    margin-top: 80px;
-    animation-name: RGB;
-    animation-duration: 4s;
-    animation-iteration-count: infinite;
-}
-
-@keyframes RGB{
-    from{box-shadow: 1px 1px 38px orange;}
-    to{box-shadow: 1px 1px 38px blue;}
-}
+    box-shadow:5px 5px 5px gold;
+    margin-top: 160px;
+  }
+ 
